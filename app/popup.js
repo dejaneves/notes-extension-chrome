@@ -46,12 +46,14 @@
     router
     .on({
       '/note/:id' : function(params) {
+        LoadHTML('note.html','content');
+      },
+      '/home' : function(params) {
         console.log('here 1', params);
       }
     })
     .resolve();
   }
-
 
   document.addEventListener('DOMContentLoaded', function () {
     BindEvent();
