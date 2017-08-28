@@ -38,30 +38,30 @@
   }
 
   function BindEvent() {
-    var root = null;
-    var useHash = true;
-    var hash = '#!';
-    var router = new Navigo(root, useHash, hash);
+    var aLink = document.querySelectorAll('ul a');
 
-    router
-    .on({
-      '/note/:id' : function(params) {
-        LoadHTML('note.html','content');
-      },
-      '/home' : function(params) {
-        console.log('here 1', params);
-      }
-    })
-    .resolve();
+    for (var i = 0; i < aLink.length; i++) {
+      aLink[i].addEventListener('click',OpenNote);
+    }
+
+    function OpenNote(event) {
+      event.preventDefault();
+      var el = event.target;
+      console.log('open note ', el);
+      $('.modal').modal('show');
+    }
+
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    BindEvent();
+
     var list = ''; var notes = getNotes();
     for (var i = 0; i < notes.length; i++) {
-      list += '<li> <a href="#!/note/ '+notes[i].id+' "> ' + notes[i].title + '</a> </li>';
+      list += '<li class="list-group-item"> <a data-note-id="'+notes[i].id+'" href="#"> ' + notes[i].title + '</a> </li>';
     }
     document.querySelector('ul').innerHTML = list;
+
+    BindEvent();
   });
 
 })();
