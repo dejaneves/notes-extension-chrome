@@ -38,19 +38,26 @@
   }
 
   function BindEvent() {
-    var aLink = document.querySelectorAll('ul a');
+    var aLink = document.querySelectorAll('ul a'),
+        textarea = document.querySelector('textarea');
 
     for (var i = 0; i < aLink.length; i++) {
       aLink[i].addEventListener('click',OpenNote);
     }
 
-    function OpenNote(event) {
-      event.preventDefault();
-      var el = event.target;
-      console.log('open note ', el);
-      $('.modal').modal('show');
-    }
+    textarea.addEventListener('keyup',function(){
 
+    },false);
+
+
+
+  }
+
+  function OpenNote(event) {
+    event.preventDefault();
+    var el = event.target;
+    console.log('open note ', el);
+    $('.modal').modal('show');
   }
 
   document.addEventListener('DOMContentLoaded', function () {
