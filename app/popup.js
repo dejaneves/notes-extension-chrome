@@ -38,15 +38,15 @@
   }
 
   function BindEvent() {
-    var aLink = document.querySelectorAll('ul a'),
+    var aLink    = document.querySelectorAll('ul a'),
         textarea = document.querySelector('textarea');
 
     for (var i = 0; i < aLink.length; i++) {
       aLink[i].addEventListener('click',OpenNote);
     }
 
-    textarea.addEventListener('keyup',function(){
-
+    textarea.addEventListener('keyup',function(event){
+      console.log('event ', event);
     },false);
 
 
